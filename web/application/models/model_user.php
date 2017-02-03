@@ -20,6 +20,16 @@ class Model_User extends Model
 		return $data;
  	}
 
+ 	function get_orders(){
+
+    	$id_user = $_SESSION['iduser'];
+    	$orders = $this->db->makeQuery("SELECT * 
+    								  FROM `history_of_orders` 
+    								  WHERE `id_user` = $id_user 
+    								  ORDER BY id DESC");
+		return $orders;
+ 	}
+
  	public function registration(){
 
 		$password = Lib::clearRequest($_POST['password']);

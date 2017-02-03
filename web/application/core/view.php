@@ -13,7 +13,8 @@ class View
 	function generate($content_view, 
 					  $template_view, 
 					  $data = null,
-					  $user = null)
+					  $user = null,
+					  $orders = null)
 	{
 		
 		/*

@@ -21,7 +21,6 @@ class Route
 			$action_name = $routes[3];
 		}
 
-
 		if (!$_SESSION["auth"] && $controller_name != "user" && $action_name != "auth") {
 			
 			$host = 'http://'.$_SERVER['HTTP_HOST'].'/';	      
@@ -29,11 +28,14 @@ class Route
 		}
 
 		// TODO плюс если запрос  не профиль, то отшить
-		if ($_SESSION["auth"] && $_SESSION["role"] != '10') {			
+		if ($_SESSION['role'] == '30' && $_SESSION['auth'] && ($controller_name == 'orders')) {
+
+		}elseif ($_SESSION['role'] =='10' && $_SESSION['auth']) {
+
+		}else{
 			Route::ErrorPage404();
 			die();
 		}
-
 		// добавляем префиксы
 		$model_name = 'Model_'.$controller_name;
 		$controller_name = 'Controller_'.$controller_name;

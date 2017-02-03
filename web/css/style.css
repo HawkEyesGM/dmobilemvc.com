@@ -1496,9 +1496,25 @@ del {
 }
 
 #close-order{
-  margin: 10px 10px;
-  mar
+  margin: 10px 10px; 
 }
+
+.table-bordered {
+  text-align: center;
+}
+
+.table-bordered th{
+  text-align: center;
+}
+
+.form-horizontal .add_in_order {
+  border:1px solid red;
+  width:200px;
+  height: 300px;
+}
+
+
+
 
   
 

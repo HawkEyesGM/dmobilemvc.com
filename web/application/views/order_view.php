@@ -57,7 +57,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
 							<select name="order_city" class="form-control selectpicker" >
-								<option value=" " >Выберите город</option>
+								<option value="-" >Выберите город</option>
 								<option value="kiev">Киев</option>
 								<option value="odessa">Одесса</option>
 								<option value="dnepr">Днепр</option>
@@ -147,9 +147,8 @@
 							</label>
 						</div>
 					</div>
-				</div><br>
-				<input type="hidden" name="order_id_user" value="<?=$user["id"]?>" />
-				<input type="hidden" name="order_total_summ" value="<?=$totalSum ?>" />
+				</div><br>				
+				<input type="hidden" name="order_total_sum" value="<?=$totalSum ?>" />
 				<div id="totalSum-order"><h4>Итого к оплате:</h4> <?=$totalSum ?><?=" грн<br>"?></div><br>			
 				
 				<!-- Button -->

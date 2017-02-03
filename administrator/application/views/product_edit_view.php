@@ -52,7 +52,7 @@
 				<label class="col-md-4 control-label">Опубликовать:</label>  
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
-					<select name="public" class="form-control select" >       
+						<select name="public" class="form-control select" >       
 							<option value= 1 <?if($good['public'] == 1){echo 'selected';}?>>Опубликовать</option>
 							<option value= 0 <?if($good['public'] != 1){echo 'selected';}?>>Не публиковать</option>
 						</select>
@@ -378,7 +378,7 @@
 						<textarea type="text" class="form-control" name="description"  style="width:500px; height:150px;" required><?=$good['description']?></textarea>
 					</div>
 				</div>
-			</div>	
+					</div>	
 
 			<!-- Button -->
 			<div class="form-group">

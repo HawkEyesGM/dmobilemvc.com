@@ -28,7 +28,7 @@
 				<label class="col-md-4 control-label">Опубликовать:</label>  
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
-					<select name="public" class="form-control select" >       
+						<select name="public" class="form-control select" >       
 							<option value= 1>Опубликовать</option>
 							<option value= 0>Не публиковать</option>
 						</select>

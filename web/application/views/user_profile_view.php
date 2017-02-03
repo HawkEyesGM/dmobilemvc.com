@@ -1,3 +1,10 @@
+<!-- <?var_dump($data)?><br>
+<?var_dump($_SESSION)?><br><br>-->
+<!--   <?echo "<pre>";
+print_r($orders)?>  -->
+<!-- <?var_dump($_GET)?> -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -142,13 +149,28 @@
 					</div>					
 				</div>
 			</div>
-			<div id="menu2" class="tab-pane fade">
-				<h3>Menu 2</h3>
 
-			</div>
-			<div id="menu3" class="tab-pane fade">
-				<h3>Menu 3</h3>
-
+			<div id="menu2" class="tab-pane fade">				
+				<?foreach ($orders as $key => $value) {
+					if($value["status"] != "accept"){?>		  			
+			  			<div class="panel panel-default">
+			  				<div class="panel-heading">
+			  					<h4 class="panel-title"><a href="/order/show?id=<?=$value["id"]."&"."status=".$value["status"]?>">Заказ № <?=$value["id"]." от ".$value["data"];?></a></h4>
+			  				</div>		  					
+			  			</div>
+	  				<?}?>
+	  			<?}?>
+			</div> <!-- end menu-2 -->
+			<div id="menu3" class="tab-pane fade">				
+				<?foreach ($orders as $key => $value) {
+					if($value["status"] == "accept"){?>		  			
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title"><a href="/order/show?id=<?=$value["id"]."&"."status=".$value["status"]?>">Заказ № <?=$value["id"]." от ".$value["data"];?></a></h4>
+						</div>		  					
+					</div>
+					<?}?>
+				<?}?>
 			</div>
 		</div>
 	</div>

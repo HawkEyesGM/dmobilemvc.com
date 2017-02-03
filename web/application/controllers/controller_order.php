@@ -17,34 +17,15 @@ class Controller_Order extends Controller
 	}
 
 	public function action_add(){				
-		$this->model->order_add();
+		$this->model->order_processing();
 	}
 
-	// public function action_add(){			
-	// 	$this->model->basketAdd();
-	// }
+	public function action_happy(){				
+		$this->view->generate('', 'happy_view.php');
+	}
 
-	// public function action_change_quantity(){				
-	// 	$this->model->change_quant();
-	// }
-
-	// public function action_minus(){	
-	// 	$id = $_GET["id"];							
-	// 	$this->model->quantity_minus($id);
-	// }
-
-	// public function action_plus(){	
-	// 	$id = $_GET["id"];							
-	// 	$this->model->quantity_plus($id);
-	// }
-
-	// public function action_delete(){	
-	// 	$id = $_GET["id"];							
-	// 	$this->model->basket_del($id);
-	// }
-
-	// public function action_clear(){										
-	// 	$this->model->basket_clear();
-	// }	
-
+	public function action_show(){
+		$data = $this->model->get_goods();				
+		$this->view->generate('', 'order_info_view.php', $data);
+	}
 }

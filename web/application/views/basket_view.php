@@ -1,5 +1,5 @@
 <!-- шаблон корзина товаров -->
-<link rel="stylesheet" href="static/css/basket.css">
+<!-- <link rel="stylesheet" href="static/css/basket.css"> -->
 
 <div class="line"></div>
 <div id="backgroundBasket">

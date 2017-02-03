@@ -14,7 +14,8 @@ class View
 					  $template_view ,		 
 					  $colors = null,
 					  $features = null,
-					  $data = null)
+					  $data = null,
+					  $order = null)
 	{
 		
 		/*

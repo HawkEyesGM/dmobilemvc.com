@@ -63,6 +63,14 @@ class Valid
 			return false;			
 		}
 	}
+	
+	static function checkNumber($number){
+		if(preg_match('/[0-9#№-]{1,100}/i',$number,$arr)){
+			return true;	
+		}else{
+			return false;			
+		}
+	}
 
 
 	

@@ -131,6 +131,10 @@
 						if($_SESSION["role"] == 10){?>
 						<a href="/admin">Admin</a>.
 						<?}?>
+						<?
+						if(($_SESSION["role"] == 30)||($_SESSION["role"] == 10)){?>
+						<a href="/admin/orders">Заказы</a>
+						<?}?>
 					</center>
 				</div>
 				

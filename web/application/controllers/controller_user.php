@@ -45,7 +45,8 @@ class Controller_User extends Controller
 
 	public function action_profile() {
 		$data = $this->model->get_data();
-		$this->view->generate('', 'user_profile_view.php', $data);
+		$orders = $this->model->get_orders();
+		$this->view->generate('', 'user_profile_view.php', $data," ",  $orders);
 	}
 
 	public function action_edit() {	
