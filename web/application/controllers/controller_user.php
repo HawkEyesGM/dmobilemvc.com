@@ -10,7 +10,7 @@ class Controller_User extends Controller
 	public function action_index() {
 		Route::ErrorPage404();		
 	}
-
+	
 	public function action_auth() {
 		$auth = Lib::clearRequest($_POST["auth"]);
 
@@ -52,4 +52,9 @@ class Controller_User extends Controller
 	public function action_edit() {	
 		$this->model->profile_change();				
 	}
+
+	public function action_checkEmailAjax() {
+		$this->model->checkMail();		
+	}
+
 }

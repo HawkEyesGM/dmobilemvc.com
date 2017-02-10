@@ -253,6 +253,19 @@ class Model_User extends Model
 		header("Location: /user/profile");
 
 
-    }   	
+    } 
+
+    /*AJAX check input email*/
+    public function checkMail(){
+ 		$email =  $_GET['email'];
+
+ 		$this->query ="SELECT * 
+ 					   FROM `users` 
+ 					   WHERE `email`= '".$email."';";
+		$res = $this->db->makeQuery($this->query);
+		if($res){
+			echo "<div class='alert alert-danger alert-danger-email'>"."Такой email уже существует!!!"."</div>";
+		}
+ 	}  	
 
 }

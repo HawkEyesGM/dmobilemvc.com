@@ -103,7 +103,7 @@ class Model_Product extends Model
 		 	header("Location: /admin/product/add");
 		 	die();
 		}
-		// $productName = $this->db->real_escape_string($productName);
+		$productName = $this->db->real_escape_string($productName);
 		
 
 		/*friendly URL*/
@@ -115,7 +115,7 @@ class Model_Product extends Model
 			header("Location: /admin");	
 		}
 		$alias = "/" . $alias;
-		// $alias = $this->db->real_escape_string($alias);
+		$alias = $this->db->real_escape_string($alias);
 
 		/*Brand*/
 		$brand = Lib::clearRequest($_POST['brand']);
@@ -306,7 +306,7 @@ class Model_Product extends Model
 			$img_name = $img.".".$fileform;
 			$img_name_medium = $img."_med".".".$fileform;
 			$img_name_small = $img."_small".".".$fileform;
-			Lib::resize("web/images/dynamic_img/".$img_name, "web/images/dynamic_img/".$img_name_medium, 173, 280);
+			Lib::resize("web/images/dynamic_img/".$img_name, "web/images/dynamic_img/".$img_name_medium, 145, 280);
 			Lib::resize("web/images/dynamic_img/".$img_name, "web/images/dynamic_img/".$img_name_small, 0, 100);
 			$size_img=getimagesize('web/images/dynamic_img/'.$img_name_small);
 			if($size_img[0] > $size_img[1]){				 
@@ -601,7 +601,7 @@ class Model_Product extends Model
 			$img_name_medium = $img."_med".".".$fileform;
 			$img_name_small = $img."_small".".".$fileform;
 
-			Lib::resize("web/images/dynamic_img/".$img_name, "web/images/dynamic_img/".$img_name_medium, 173, 280);
+			Lib::resize("web/images/dynamic_img/".$img_name, "web/images/dynamic_img/".$img_name_medium, 145, 280);
 			Lib::resize("web/images/dynamic_img/".$img_name, "web/images/dynamic_img/".$img_name_small, 0, 100);
 
 			$size_img=getimagesize("web/images/dynamic_img/".$img_name_small);

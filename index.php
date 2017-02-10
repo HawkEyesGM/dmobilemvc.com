@@ -19,7 +19,10 @@ if ($_SESSION['auth'] && !$_SESSION['token']) {
  $_SESSION['token'] = password_hash('1234'.time(),PASSWORD_DEFAULT);
 };
 
-$_SESSION["lang"] = "ru";
+if(!$_SESSION['lang']){
+	$_SESSION["lang"] = "ru";
+}
+
 
 if ($admin_uri === "admin") {
 	require_once 'administrator/application/bootstrap.php'; 

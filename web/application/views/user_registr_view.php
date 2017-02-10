@@ -20,10 +20,24 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-							<input name="email" placeholder="E-Mail Address" class="form-control reg"  type="text" pattern="([a-z-0-9]+\.)*[a-z-0-9]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,6}" required> 
+							<input name="email" placeholder="E-Mail Address" class="form-control reg"  type="text" pattern="([a-z-0-9]+\.)*[a-z-0-9]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,6}" required id="email"> </div>
+							<b id="content_form"></b>
 						</div>												 
 					</div>
-				</div>
+				
+
+				<script>
+					$('#email').blur(function(){
+						var email = $('#email').val();
+						$.ajax({
+							url: "/user/checkEmailAjax?email="+email,
+							type: "GET",							
+							success: function(html){
+								$('#content_form').html(html);								
+							}
+						});
+					});					
+				</script>
 
 				<div class="form-group">
 					<label class="col-md-4 control-label">Пароль</label>  

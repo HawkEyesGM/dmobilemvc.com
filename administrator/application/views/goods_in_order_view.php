@@ -17,7 +17,7 @@
 <body id="reg_body">
   <div class="container well form-horizontal">
   <a href = "/admin/orders" type="button" class="close" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></a>
-    <h1>Заказ №<?=$data[0]['id_order']?></h1>             
+    <h1>Заказ №<?=$data[0]['id_order']?>  <?="(".$order[0]['status'].")";?></h1>             
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -40,9 +40,12 @@
       </tbody>
     </table>
     Общая сумма заказа : <?=$total_summ?><small> грн</small><br>
-    <h1>Редактирование заказа</h1>   
 
-   
+    
+
+    <?if(($order[0]['status'] != "canceled") && ($order[0]['status'] != "accept")){?>
+
+     <h1>Редактирование заказа</h1>   
         
       <form class="well form-horizontal" action="/admin/orders/edit" method="POST"  id="contact_form" enctype="multipart/form-data">
         <fieldset>      
@@ -135,6 +138,7 @@
                   <option value="way" <?if($order[0]['status'] == "way"){echo 'selected';}?>>В пути</option>
                   <option value="delivered" <?if($order[0]['status'] == "delivered"){echo 'selected';}?>>Доставлен</option>
                   <option value="accept" <?if($order[0]['status'] == "accept"){echo 'selected';}?>>Принят</option>
+                  <option value="canceled" <?if($order[0]['status'] == "canceled"){echo 'selected';}?>>Отменен</option>
                 </select>           
               </div>
             </div>
@@ -151,6 +155,7 @@
 
         </fieldset>
       </form>
+      <?}?>
     
   </div>
 

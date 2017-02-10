@@ -1,3 +1,8 @@
+<!-- <?
+echo "<pre>";
+print_r($data);
+?> -->
+
 <div class="container">
     <div class='lside'>
         <h4>Подбор по параметрам:</h4><hr>
@@ -76,7 +81,7 @@
                 <input type="checkbox" onclick="document.getElementById('sort').submit();" name="price[5]" value='price >= 10000' id='price6'><label for="price6">Более 10000 грн</label><br>
             </div>
         </div>
-    </div>
+    </div> <!-- end class='lside' -->
     <script>
         var show;
         function hidetxt(type)
@@ -90,9 +95,8 @@
         }
     </script>
 
-    <div class="sort">
-        <form action="" method="post" >
-            <!-- Сортировка:-->
+   <!--  <div class="sort">
+        <form action="" method="post" >            
             <select name="category" onchange="this.form.submit()">
                 <option value="raiting" <?if($_POST['category'] == "raiting"){echo 'selected';}?>>по рейтингу</option>
                 <option value="cheap" <?if($_POST['category'] == "cheap"){echo 'selected';}?>>от дешевых к дорогим</option>
@@ -100,119 +104,110 @@
                 <option value="new"<?if($_POST['category'] == "new"){echo 'selected';}?>>новинки</option>
             </select>
         </form>
-    </div>
+    </div> -->
 
+   <!--  <div class="sort">
+        <form action="" method="post" >            
+            <select name="category" onchange="this.form.submit()">
+                <option value="raiting" >по рейтингу</option>
+                <option value="cheap" >от дешевых к дорогим</option>
+                <option value="expensive">от дорогих к дешевым</option>
+                <option value="new">новинки</option>
+            </select>
+        </form>
+    </div> -->
+
+    <div class="sort">
+       <span style="text-decoration: underline; cursor: pointer; " id="cheap">От дешевых к дорогим</span><br><br>
+       <span style="text-decoration: underline;cursor: pointer; " id="expensive">От дорогиx к дешевым</span>
+   </div>
+   <!--  <div id="aaa"></div> -->
     <div class="main">
-        <script>
-            document.getElementById('apple_name').onclick = function()
-            {
-                if(document.getElementById('apple_name').checked) {
-                    localStorage.setItem('apple_name', "true");
-                } else {
-                    localStorage.setItem('apple_name', "false");
-                }
-            }
-            if (localStorage.getItem('apple_name') == "true") {
-                document.getElementById("apple_name").setAttribute('checked','checked');
-            }
-        </script>
-        <script>
-            document.getElementById('stat2').onclick = function()
-            {
-                if(document.getElementById('stat2').checked) {
-                    localStorage.setItem('stat2', "true");
-                } else {
-                    localStorage.setItem('stat2', "false");
-                }
-            }
-            if (localStorage.getItem('stat2') == "true") {
-                document.getElementById("stat2").setAttribute('checked','checked');
-            }
-        </script>
-
-        <ul>
+        <div id="fon"></div>
+        <div id="load"></div>
+        <ul id="tovar">
             <?foreach ($data as $key => $good){
-            $good_id=$key;?>  <!--айди товара -->
-            <li>
-                <div class="good" >
-                    <!-- видеообзор -->
-                    <div class="video">
-                        <?if ($good["video"]){?>
+                $good_id=$key;?>  <!--айди товара -->
+                <li>
+                    <div class="good col-sm-12" >
+                        <!-- видеообзор -->
+                        <div class="video">
+                            <?if ($good["video"]){?>
                             <a href="<?=$good["video"]?>"><center><img src="web/images/static_img/video.jpg" title="Видеообзор" alt="Видеообзор" 	width="25px" /><br>video</center></a>
-                        <?}?>
-                    </div>
-                    <!-- стикер -->
-                    <?switch ($good["sticker"]){
-                        case false;
+                            <?}?>
+                        </div>
+                        <!-- стикер -->
+                        <?switch ($good["sticker"]){
+                            case false;
                             $class = "";
                             break;
-                        case "Суперцена";
+                            case "Суперцена";
                             $class = "superPrice";
                             break;
-                        case "Топ продаж";
+                            case "Топ продаж";
                             $class = "topSales";
                             break;
-                        case "Акция";
+                            case "Акция";
                             $class = "stock";
                             break;
-                    }?>
-                    <div class="<?=$class?>"><?=$good["sticker"]?></div>
+                        }?>
+                        <div class="<?=$class?>"><?=$good["sticker"]?></div>
 
-                    <!-- демо-видео -->
-                    <div class="demo">
-                        <?
-                        if ($good["demo"]) {?>
+                        <!-- демо-видео -->
+                        <div class="demo">
+                            <?
+                            if ($good["demo"]) {?>
                             <a href="<?=$good["demo"]?>"><center><img src="web/images/static_img/demo.jpg" title="Демонстрация" alt="Демонстрация" width="25px" /><br>demo</center></a>
-                        <?}?>
-                    </div>
-
-                    <!-- изображение товара -->
-                    <div class="imgGood">
-                        <a href="<?=$good["alias"]?>"> <center><img src="web/images/dynamic_img/<?=$good['images']["main_img_medium"];?>" width=100%
-                                                                            alt="<?=$good['images']["alt_img"]?>" title="<?=$good['images']["title_img"]?>"></center> </a>
-                    </div>
-
-                    <!-- цвета товара -->
-                    <div class="colorsGood">
-                        <?foreach($good['colors'] as $k=>$v){?>
-                            <a href="/product?id=<?=$key?>"><img src="web/images/static_img/<?=$v["target"]?>" width=100% class="colorChoise" alt="<?=$v["name"]?>"/></a><br>
-                        <?}?>
-                    </div>
-
-                    <!-- наличие товара -->
-                    <div class="endingGood">
-                        <?if ($good["in_stock"]) {?>
-                            <center>Заканчивается</center>
-                        <?}?>
-                    </div>
-
-                    <!-- название товара -->
-                    <div class="nameGood">                        
-                        <a href="<?=$good["alias"]?>">Мобильный телефон <?=$good["name"]?></a>
-                    </div>
-                    <br>
-
-                    <!-- старая цена товара -->
-                    <div class="oldPrice">
-                        <?if ($good["old_price"]) {?>
-                            <del><span><?=$good["old_price"]."<small>"?></span></del><?=" грн</small>"?>
-                        <?}?>
-                    </div>
-
-                    <!-- актуальная цена товара -->
-                    <div class="PriceContainer">
-                        <div class="price">
-                            <?if ($good["price"]) {?>
-                                <?=$good["price"]."<small> грн</small>"?>
                             <?}?>
                         </div>
 
-                        <!-- рейтинг товара -->
-                        <div class="raiting">
-                            <i class="sprite sprite-<?=$good["raiting"]?>" width=100%></i>
-                        </div>
+                        <!-- изображение товара -->
+                        <div class="imgGood">
+                            <a href="<?=$good["alias"]?>"> <center><img src="web/images/dynamic_img/<?=$good['images']["main_img_medium"];?>" width=100%
+                                alt="<?=$good['images']["alt_img"]?>" title="<?=$good['images']["title_img"]?>" ></center> </a>
+                            </div>
 
-                        <!-- отзывы -->
+                            <!-- цвета товара -->
+                            <div class="colorsGood">
+                                <?foreach($good['colors'] as $k=>$v){?>
+                                <a href="/product?id=<?=$key?>"><img src="web/images/static_img/<?=$v["target"]?>" width=100% class="colorChoise" alt="<?=$v["name"]?>"/></a><br>
+                                <?}?>
+                            </div>
+
+                            <!-- наличие товара -->
+                            <div class="endingGood">
+                                <?if ($good["in_stock"]) {?>
+                                <center>Заканчивается</center>
+                                <?}?>
+                            </div>
+
+                            <!-- название товара -->
+                            <div class="nameGood">                        
+                                <a href="<?=$good["alias"]?>">Мобильный телефон <?=$good["name"]?></a>
+                            </div>
+
+
+                            <!-- старая цена товара -->
+                            <div class="oldPrice">
+                                <?if ($good["old_price"]) {?>
+                                <del><span><?=$good["old_price"]."<small>"?></span></del><?=" грн</small>"?>
+                                <?}?>
+                            </div>
+
+                            <!-- актуальная цена товара -->
+                            <div class="PriceContainer">
+                                <div class="price">
+                                    <?if ($good["price"]) {?>
+                                    <?=$good["price"]."<small> грн</small>"?>
+                                    <?}?>
+                                </div>
+
+                                <!-- рейтинг товара -->
+                                <div class="raiting">
+                                    <i class="sprite sprite-<?=$good["raiting"]?>" width=100%></i>
+                                </div>
+
+                                <!-- отзывы -->
                         <!--                --><?//$query="SELECT `id_comm`, `g_id`, `comm_description`, `plus`, `minus`
                         //					  FROM `comments`
                         //					  WHERE g_id=$g_id;";
@@ -232,43 +227,37 @@
                                 }elseif($rest===1){
                                     $last= "";
                                 }else{$last= "a";
-                                }
-                            }?>
-                            <a href=""><?=$comments_count." "." отзыв".$last?> </a>
-                        </div>
-                    </div>
-
-                    <div class="idGood">
-                        <a href="/basket/add?id=<?=$good["id"]?>"><img src="web/images/static_img/buy_button.png" width="130px" width=100%></a>
-                    </div>
-
-                    <!-- особенности товара -->
-                    <div class="features">
-                    <span>
-                        <?foreach($good['features'] as $k=>$v){?>
-                            <img src="web/images/static_img/<?=$v["feature_img"]?>" width=100% title="<?=$v["feature_name"]?>">
-                        <?}?>
-                    </span>
-                    </div><br>
-
-                    <!-- описание товара -->
-                    <div class="description">
-                        <?=$good["description"]?>
+                            }
+                        }?>
+                        <a href=""><?=$comments_count." "." отзыв".$last?> </a>
                     </div>
                 </div>
 
-            </li>
-                <?}?>
-        </ul>
+                <div class="idGood">
+                    <a href="/basket/add?id=<?=$good["id"]?>"><img src="web/images/static_img/buy_button.png" width="130px" width=100%></a>
+                </div>
 
+                <!-- особенности товара -->
+                <div class="features">
+                    <span>
+                        <?foreach($good['features'] as $k=>$v){?>
+                        <img src="web/images/static_img/<?=$v["feature_img"]?>" width=100% title="<?=$v["feature_name"]?>">
+                        <?}?>
+                    </span>
+                </div>
 
-
-
-
-
-
-
+                <!-- описание товара -->
+                <div class="description">
+                    <?=$good["description"]?>
+                </div>
+            </div>
+        </li>
+        <?}?>
+    </ul>
+    </div><!-- end class='lside' -->
+    <div id="footer">ПАГИНАЦИЯ</div>
     </div>
+
 
 
 

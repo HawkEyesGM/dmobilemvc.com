@@ -25,8 +25,8 @@ class Model_Orders extends Model
     	foreach ($data as $key => $value) {
     		$id_good = $data[$key]['id_good'];
     		$good =  $this->db->makeQuery("SELECT *
-									 FROM `goods`
-									 WHERE `id` = $id_good");
+									 	   FROM `goods`
+									 	   WHERE `id` = $id_good");
     		$data[$key]['good'] = $good[0] ;
     		
     	}

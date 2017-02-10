@@ -46,7 +46,7 @@ class Db
     }
 
     public function real_escape_string($name){
-        return $mysqli->real_escape_string($name);
+        return $this->dbc->real_escape_string($name);
     }
 
     public function getLastId(){

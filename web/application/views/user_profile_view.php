@@ -152,7 +152,7 @@ print_r($orders)?>  -->
 
 			<div id="menu2" class="tab-pane fade">				
 				<?foreach ($orders as $key => $value) {
-					if($value["status"] != "accept"){?>		  			
+					if(($value["status"] != "accept")&&($value["status"] != "canceled")){?>		  			
 			  			<div class="panel panel-default">
 			  				<div class="panel-heading">
 			  					<h4 class="panel-title"><a href="/order/show?id=<?=$value["id"]."&"."status=".$value["status"]?>">Заказ № <?=$value["id"]." от ".$value["data"];?></a></h4>
